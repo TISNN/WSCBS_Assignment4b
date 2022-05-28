@@ -63,5 +63,34 @@ docker buildx install
 # Switch to the buildx driver
 docker buildx create --use
 
+Downloading the binary
+sudo wget -O /usr/local/bin/brane https://github.com/epi-project/brane/releases/latest/download/brane-linux-x86_64
 
+Install Rust's compiler and the associated Cargo package manager (the easiest is to install using rustup (cross-platform))
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+
+sudo apt-get update && sudo apt-get install \
+    gcc g++ \
+    libssl-dev \
+    pkg-config \
+    make \
+    cmake
+    
+With the dependencies installed, you may then clone the repository and build the Command-Line Interface:
+# Clone the repo and CD into it
+git clone https://github.com/epi-project/brane && cd brane
+
+# Run the make.sh script to build the CLI
+chmod +x ./make.sh
+./make.sh cli (cargo build --release --package brane-cli)
+
+#linker `cc` not found
+sudo apt install build-essential
+
+sudo apt-get install -y pkg-config
+
+# openssl failed 
+sudo aptitude update
+sudo apt-get -y install libssl-dev
 
