@@ -2,9 +2,8 @@
 
 README
 =======
-38 - control node
-
-37、39 - worker node
+076 data procesing
+077 visualization
 
 docker
 ------------
@@ -22,33 +21,33 @@ Set up the repository
     
  2. Add Docker’s official GPG key:
 
-$ sudo mkdir -p /etc/apt/keyrings
+ sudo mkdir -p /etc/apt/keyrings
+ 
+ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
-$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
 3. Use the following command to set up the repository:
-  echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+ echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
   
 Install Docker Engine
 ------------
 1. Update the apt package index, and install the latest version of Docker Engine, containerd, and Docker Compose, or go to the next step to install a specific version:
 
-$ sudo apt-get update
-
-$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 2. Install a specific version of Docker Engine
 a. List the versions available in your repo:
   apt-cache madison docker-ce
   
-docker-ce | 5:20.10.15~3-0~debian-bullseye | https://download.docker.com/linux/debian bullseye/stable amd64 Packages
+sudo apt-get install docker-ce=5:20.10.15~3-0~debian-bullseye docker-ce-cli=5:20.10.15~3-0~debian-bullseye containerd.io docker-compose-plugin
 
 b. Install a specific version using the version string from the second column, for example, 5:20.10.16~3-0~ubuntu-jammy
 
 sudo apt-get install docker-ce=5:20.10.15~3-0~debian-bullseye docker-ce-cli=5:20.10.15~3-0~debian-bullseye containerd.io docker-compose-plugin
- 
+
 3. Verify that Docker Engine is installed correctly by running the hello-world image.
 sudo docker run hello-world
 
@@ -85,6 +84,10 @@ git clone https://github.com/epi-project/brane && cd brane
 chmod +x ./make.sh
 ./make.sh cli (cargo build --release --package brane-cli)
 
+# run brane command 
+sudo chmod +x /usr/local/bin/brane
+sudo cp ./target/release/brane /usr/local/bin/brane
+
 #linker `cc` not found
 sudo apt install build-essential
 
@@ -94,3 +97,12 @@ sudo apt-get install -y pkg-config
 sudo aptitude update
 sudo apt-get -y install libssl-dev
 
+# Unlock (build)
+rm /home/student076/.local/share/brane/dataengineering/1.0.0/.lock
+/root/.local/share/brane/packages/dataengineering/1.0.0/.lock')
+
+sudo rm /home/student076/.local/share/brane/packages/hello_world/1.0.0/.lock
+
+# zip
+sudo apt-get install unzip
+unzip    xxxxx.zip
