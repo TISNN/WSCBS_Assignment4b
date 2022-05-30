@@ -27,7 +27,7 @@ install:
 
 # Define the actions
 actions:
-  Gender:
+  gender:
     command:
       args:
       - gender
@@ -38,7 +38,7 @@ actions:
     - name: contents
       type: string
 
-  class:
+  pclass:
     command:
       args:
       - pclass
@@ -49,7 +49,7 @@ actions:
     - name: contents
       type: string
 
-  class:
+  Ticket:
     command:
       args:
         - Ticket
@@ -60,10 +60,21 @@ actions:
       - name: contents
         type: string
 
-  class:
+  Title:
     command:
       args:
         - Title
+    input:
+      - name: source
+        type: string
+    output:
+      - name: contents
+        type: string
+  
+  Correlation:
+    command:
+      args:
+        - Correlation
     input:
       - name: source
         type: string
