@@ -106,3 +106,6 @@ sudo rm /home/student076/.local/share/brane/packages/hello_world/1.0.0/.lock
 # zip
 sudo apt-get install unzip
 unzip    xxxxx.zip
+
+## PNG
+xdg-open xxx.png
