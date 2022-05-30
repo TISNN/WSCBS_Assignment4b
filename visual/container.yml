@@ -1,6 +1,6 @@
 # Define the file metadata
 name: visual
-version: 6.0.6
+version: 6.0.7
 kind: ecu
 
 # Define the files that are part of the package
@@ -48,3 +48,25 @@ actions:
     output:
     - name: contents
       type: string
+
+  class:
+    command:
+      args:
+        - Ticket
+    input:
+      - name: source
+        type: string
+    output:
+      - name: contents
+        type: string
+
+  class:
+    command:
+      args:
+        - Title
+    input:
+      - name: source
+        type: string
+    output:
+      - name: contents
+        type: string

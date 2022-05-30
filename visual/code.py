@@ -38,7 +38,42 @@ def pclass(source: str) -> str:
     except:
         return f"Error: {e} ({e.errno})"
 
+def Ticket(source: str) -> str:
+    try:
+        data = pd.read_csv(f"/data/{source}.csv")
 
+        data['Ticket'].value_counts()
+
+        Ticket_Count = dict(data['Ticket'].value_counts())
+        data['Ticket_Class'] = data['Ticket'].apply(lambda x: Ticket_Count[x])
+        sns.barplot(x='Ticket_Class', y='Survived', data=data)
+        plt.savefig(f"/data/Ticket_{source}.png")
+        plt.close()
+        return "Figure saved to \"/data/Ticket{source}.png\""
+    except:
+        return f"Error: {e} ({e.errno})"
+
+def Title(source: str) -> str:
+    try:
+        data = pd.read_csv(f"/data/{source}.csv")
+
+        # Name processing
+        # Title Feature(New)
+        data['Title'] = data['Name'].apply(lambda x: x.split(',')[1].split('.')[0].strip())
+        data['Title'].replace(['Mr'], 'Mr', inplace=True)
+        data['Title'].replace(['Mlle', 'Miss'], 'Miss', inplace=True)
+        data['Title'].replace(['Mme', 'Ms', 'Mrs'], 'Mrs', inplace=True)
+        data['Title'].replace(['Capt', 'Col', 'Major', 'Dr', 'Rev'], 'Officer', inplace=True)
+        data['Title'].replace(['Don', 'Sir', 'the Countess', 'Dona', 'Lady'], 'Royalty', inplace=True)
+        data['Title'].replace(['Master', 'Jonkheer'], 'Master', inplace=True)
+
+        sns.barplot(x="Title", y="Survived", data=data)
+
+        plt.savefig(f"/data/Title_{source}.png")
+        plt.close()
+        return "Figure saved to \"/data/Title{source}.png\""
+    except:
+        return f"Error: {e} ({e.errno})"
 
 # The entrypoint of the script
 if __name__ == "__main__":
@@ -53,4 +88,8 @@ if __name__ == "__main__":
         print(yaml.dump({ "contents": gender(os.environ["SOURCE"]) }))
     elif command == "pclass":
         print(yaml.dump({ "contents": pclass(os.environ["SOURCE"]) }))
+    elif command == "Ticket":
+        print(yaml.dump({ "contents": Ticket(os.environ["SOURCE"]) }))
+    elif command == "Title":
+        print(yaml.dump({ "contents": Title(os.environ["SOURCE"]) }))
     # Done!
