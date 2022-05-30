@@ -148,15 +148,12 @@ def Correlation(source: str) -> str:
 
         ax.spines['top'].set_visible(True)
 
-        fig.text(0.97, 1, 'Correlation Heatmap Visualization', fontweight='bold', fontfamily='serif', fontsize=15,
-                 ha='right')
-        fig.text(0.97, 0.92, 'Dataset : Titanic, fontweight='light', fontfamily='serif',
-                 fontsize=12, ha='right')
-
         plt.tight_layout()
+        plt.show()
 
         plt.savefig(f"/data/Correlation_{source}.png")
         plt.close()
+
         return "Figure saved to \"/data/Correlation{source}.png\""
     except:
         return f"Error: {e} ({e.errno})"
@@ -181,5 +178,5 @@ if __name__ == "__main__":
     elif command == "Title":
         print(yaml.dump({ "contents": Title(os.environ["SOURCE"]) }))
     elif command == "Correlation":
-        print(yaml.dump({ "contents": Title(os.environ["SOURCE"]) }))
+        print(yaml.dump({ "contents": Correlation(os.environ["SOURCE"]) }))
     # Done!
