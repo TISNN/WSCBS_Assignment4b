@@ -27,7 +27,7 @@ install:
 
 # Define the actions
 actions:
-  gender:
+  Gender:
     command:
       args:
       - gender

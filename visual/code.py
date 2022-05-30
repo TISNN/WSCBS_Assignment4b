@@ -75,6 +75,55 @@ def Title(source: str) -> str:
     except:
         return f"Error: {e} ({e.errno})"
 
+def Correlation(source: str) -> str:
+    try:
+        data = pd.read_csv(f"/data/{source}.csv")
+
+        data['Sex'] = data['Sex'].map({'male': 0, 'female': 1})
+        data['Embarked'] = data['Embarked'].fillna('S')
+        data['Embarked'] = data['Embarked'].map({'S': 0, 'C': 1, 'Q': 2})
+        data['Family'] = data['SibSp'] + data['Parch']
+        data = data[[col for col in data.columns if col != 'Survived'] + ['Survived']]
+        corr = data.corr()
+
+        sns.color_palette(sns.diverging_palette(230, 20))
+
+        fig, ax = plt.subplots(1, 1, figsize=(7, 7))
+
+        mask = np.zeros_like(corr, dtype=np.bool)
+        mask[np.triu_indices_from(mask)] = True
+
+        cmap = sns.diverging_palette(230, 20, as_cmap=True)
+
+        sns.heatmap(corr,
+                    square=True,
+                    mask=mask,
+                    linewidth=2.5,
+                    vmax=0.4, vmin=-0.4,
+                    cmap=cmap,
+                    cbar=False,
+                    ax=ax)
+
+        ax.set_yticklabels(ax.get_xticklabels(), fontfamily='serif', rotation=0, fontsize=11)
+        ax.set_xticklabels(ax.get_xticklabels(), fontfamily='serif', rotation=90, fontsize=11)
+
+        ax.spines['top'].set_visible(True)
+
+        fig.text(0.97, 1, 'Correlation Heatmap Visualization', fontweight='bold', fontfamily='serif', fontsize=15,
+                 ha='right')
+        fig.text(0.97, 0.92, 'Dataset : Titanic, fontweight='light', fontfamily='serif',
+                 fontsize=12, ha='right')
+
+        plt.tight_layout()
+
+        plt.savefig(f"/data/Correlation_{source}.png")
+        plt.close()
+        return "Figure saved to \"/data/Correlation{source}.png\""
+    except:
+        return f"Error: {e} ({e.errno})"
+
+
+
 # The entrypoint of the script
 if __name__ == "__main__":
     # Make sure that at least one argument is given, that is either 'write' or 'read'
@@ -91,5 +140,7 @@ if __name__ == "__main__":
     elif command == "Ticket":
         print(yaml.dump({ "contents": Ticket(os.environ["SOURCE"]) }))
     elif command == "Title":
+        print(yaml.dump({ "contents": Title(os.environ["SOURCE"]) }))
+    elif command == "Correlation":
         print(yaml.dump({ "contents": Title(os.environ["SOURCE"]) }))
     # Done!
