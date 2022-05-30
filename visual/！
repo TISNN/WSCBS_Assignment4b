@@ -1,0 +1,50 @@
+# Define the file metadata
+name: visual
+version: 6.0.3
+kind: ecu
+
+# Define the files that are part of the package
+files:
+- code.py
+
+# Defines the file to call whenever a function is called
+entrypoint:
+  kind: task
+  exec: code.py
+
+# Define the dependencies (as Ubuntu packages)
+dependencies:
+- python3
+- python3-pip
+- python3-yaml
+- python3-requests
+
+install:
+- pip install pandas
+  pip install matplotlib
+  pip install numpy
+  pip install seaborn
+
+# Define the actions
+actions:
+  gender:
+    command:
+      args:
+      - gender
+    input:
+    - name: source
+      type: string
+    output:
+    - name: contents
+      type: string
+
+  class:
+    command:
+      args:
+      - pclass
+    input:
+    - name: source
+      type: string
+    output:
+    - name: contents
+      type: string
