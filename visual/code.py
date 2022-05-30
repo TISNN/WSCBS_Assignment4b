@@ -31,7 +31,46 @@ def pclass(source: str) -> str:
     try:
         data = pd.read_csv(f"/data/{source}.csv")
 
-        sns.barplot(x="Pclass", y="Survived", data=data)
+        sns.color_palette(sns.color_palette("PuBu", 2))
+
+        fig = plt.figure(figsize=(12, 8))
+        gs = fig.add_gridspec(3, 1)
+        gs.update(hspace=-0.55)
+
+        axes = list()
+        colors = ["#022133", "#5c693b", "#51371c"]
+
+        for idx, cls, c in zip(range(3), sorted(data['Pclass'].unique()), colors):
+            axes.append(fig.add_subplot(gs[idx, 0]))
+
+            # you can also draw density plot with matplotlib + scipy.
+            sns.kdeplot(x='Age', data=data[data['Pclass'] == cls],
+                        fill=True, ax=axes[idx], cut=0, bw_method=0.25,
+                        lw=1.4, edgecolor='lightgray', hue='Survived',
+                        multiple="stack", palette='PuBu', alpha=0.7
+                        )
+
+            axes[idx].set_ylim(0, 0.04)
+            axes[idx].set_xlim(0, 85)
+
+            axes[idx].set_yticks([])
+            if idx != 2: axes[idx].set_xticks([])
+            axes[idx].set_ylabel('')
+            axes[idx].set_xlabel('')
+
+            spines = ["top", "right", "left", "bottom"]
+            for s in spines:
+                axes[idx].spines[s].set_visible(False)
+
+            axes[idx].patch.set_alpha(0)
+            axes[idx].text(-0.2, 0, f'Pclass {cls}', fontweight="light", fontfamily='serif', fontsize=11, ha="right")
+            if idx != 1: axes[idx].get_legend().remove()
+
+        fig.text(0.13, 0.81, "Age distribution by Pclass in Titanic", fontweight="bold", fontfamily='serif',
+                 fontsize=16)
+
+        plt.show()
+        
         plt.savefig(f"/data/pclass_{source}.png")
         plt.close()
         return "Figure saved to \"/data/pclass{source}.png\""
