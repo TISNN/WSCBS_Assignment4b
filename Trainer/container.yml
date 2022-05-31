@@ -1,0 +1,36 @@
+name: train_predict
+version: 7.1.39
+kind: ecu
+
+files:
+- train.py
+
+entrypoint:
+  kind: task
+  exec: train.py
+
+# Define the dependencies (as Ubuntu packages)
+dependencies:
+- python3
+- python3-pip
+- python3-yaml
+- python3-requests
+
+
+install:
+- pip install pandas
+  pip install matplotlib
+  pip install numpy
+  pip install scikit-learn
+
+actions:
+  train_predict:
+    command:
+      args:
+      - train_predict
+    input:
+    - name: source
+      type: string
+    output:
+    - name: contents
+      type: string
