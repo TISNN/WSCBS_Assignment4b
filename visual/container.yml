@@ -1,6 +1,6 @@
 # Define the file metadata
 name: visual
-version: 6.0.7
+version: 6.0.8
 kind: ecu
 
 # Define the files that are part of the package

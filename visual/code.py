@@ -66,7 +66,7 @@ def pclass(source: str) -> str:
             axes[idx].text(-0.2, 0, f'Pclass {cls}', fontweight="light", fontfamily='serif', fontsize=11, ha="right")
             if idx != 1: axes[idx].get_legend().remove()
 
-        fig.text(0.13, 0.81, "Age distribution by Pclass in Titanic", fontweight="bold", fontfamily='serif',
+        fig.text(0.13, 0.81, "Surivial distribution by Pclass in Titanic", fontweight="bold", fontfamily='serif',
                  fontsize=16)
 
         plt.show()
