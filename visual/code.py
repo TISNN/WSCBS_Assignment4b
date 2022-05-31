@@ -14,14 +14,14 @@ import seaborn as sns
 def gender(source: str) -> str:
     try:
         if source == "train":
-            data = pd.read_csv(f"/data/train.csv")
+            data = pd.read_csv(f"train.csv")
         elif source == "test":
-            data = pd.read_csv(f"/data/test.csv")
+            data = pd.read_csv(f"test.csv")
         else:
             return f"Source Error"
 
         sns.barplot(x="Sex", y="Survived", data=data)
-        plt.savefig(f"/data/gender_{source}.png")
+        plt.savefig(f"gender_{source}.png")
         plt.close("all")
         return "Figure saved to \"/data/gender{source}.png\""
     except IOError as e:
@@ -29,7 +29,7 @@ def gender(source: str) -> str:
 
 def pclass(source: str) -> str:
     try:
-        data = pd.read_csv(f"/data/{source}.csv")
+        data = pd.read_csv(f"{source}.csv")
 
         sns.color_palette(sns.color_palette("PuBu", 2))
 
@@ -79,7 +79,7 @@ def pclass(source: str) -> str:
 
 def Ticket(source: str) -> str:
     try:
-        data = pd.read_csv(f"/data/{source}.csv")
+        data = pd.read_csv(f"{source}.csv")
 
         data['Ticket'].value_counts()
 
@@ -94,7 +94,7 @@ def Ticket(source: str) -> str:
 
 def Title(source: str) -> str:
     try:
-        data = pd.read_csv(f"/data/{source}.csv")
+        data = pd.read_csv(f"{source}.csv")
 
         # Name processing
         # Title Feature(New)
@@ -116,7 +116,7 @@ def Title(source: str) -> str:
 
 def Correlation(source: str) -> str:
     try:
-        data = pd.read_csv(f"/data/{source}.csv")
+        data = pd.read_csv(f"{source}.csv")
 
         data['Sex'] = data['Sex'].map({'male': 0, 'female': 1})
         data['Embarked'] = data['Embarked'].fillna('S')

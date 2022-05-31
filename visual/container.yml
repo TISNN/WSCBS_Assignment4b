@@ -1,12 +1,13 @@
 # Define the file metadata
 name: visual
-version: 6.0.8
+version: 6.0.9
 kind: ecu
 
 # Define the files that are part of the package
 files:
 - code.py
-
+- train.csv
+- test.csv
 # Defines the file to call whenever a function is called
 entrypoint:
   kind: task
