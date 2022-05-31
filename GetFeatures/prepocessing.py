@@ -48,6 +48,8 @@ def processing(source: str) -> str:
     Ticket_Count = dict(whole_data['Ticket'].value_counts())
     whole_data['Ticket_Class'] = whole_data['Ticket'].apply(lambda x:Ticket_Count[x])
 
+    ##Todo: 存Ticket_Class ， Survived -> ticket.csv
+
     # The survival rate of 'tickets' from 2 to 4 is higher than all others
     def Ticket_Label(t):
         if (t > 8):
@@ -97,6 +99,8 @@ def processing(source: str) -> str:
     Male_Adult_List=Male_Adult_Group.groupby('Surname')['Survived'].mean()
     Survived_List=set(Male_Adult_List[Male_Adult_List.apply(lambda x:x==1)].index)
 
+    whole_data.to_csv(f"/data/data_for_visual.csv")
+
     if source == "train":
 
         train=whole_data.loc[whole_data['Survived'].notnull()]
@@ -123,7 +127,7 @@ def processing(source: str) -> str:
 
         test.to_csv(f"/data/{source}_testdata.csv")
 #"Figure saved to \"/data/number_of_words_{source}.png\""
-    return "{source} data was saved at ./data"
+    return "features was saved at ./data"
 
     #except IOError as e:
     #    return f"ERROR: {e} ({e.errno})"
