@@ -1,0 +1,36 @@
+name: getfeatures
+version: 6.2.4
+kind: ecu
+
+files:
+- prepocessing.py
+
+entrypoint:
+  kind: task
+  exec: prepocessing.py
+
+# Define the dependencies (as Ubuntu packages)
+dependencies:
+- python3
+- python3-pip
+- python3-yaml
+- python3-requests
+
+
+install:
+- pip install pandas
+  pip install matplotlib
+  pip install numpy
+  pip install scikit-learn
+
+actions:
+  processing:
+    command:
+      args:
+      - processing
+    input:
+    - name: source
+      type: string
+    output:
+    - name: contents
+      type: string
