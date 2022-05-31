@@ -3,6 +3,8 @@ https://zenodo.org/badge/493618913.svg
 
 https://zenodo.org/badge/latestdoi/493618913
 
+[![DOI](https://zenodo.org/badge/493618913.svg)](https://zenodo.org/badge/latestdoi/493618913)
+
 README
 =======
 076 data procesing
