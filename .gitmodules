@@ -1,0 +1,9 @@
+[submodule "WSCBS_Visualization"]
+	path = WSCBS_Visualization
+	url = https://github.com/TISNN/WSCBS_Visualization
+[submodule "brane-getfeatures"]
+	path = brane-getfeatures
+	url = https://github.com/TISNN/brane-getfeatures
+[submodule "brane-trainandpredict"]
+	path = brane-trainandpredict
+	url = https://github.com/TISNN/brane-trainandpredict
