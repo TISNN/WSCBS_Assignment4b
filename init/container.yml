@@ -1,0 +1,39 @@
+name: init
+version: 1.1.7
+kind: ecu
+
+files:
+- init.py
+- test.csv
+- train.csv
+
+entrypoint:
+  kind: task
+  exec: init.py
+
+# Define the dependencies (as Ubuntu packages)
+dependencies:
+- python3
+- python3-pip
+- python3-yaml
+- python3-requests
+
+
+install:
+- pip install pandas
+  pip install matplotlib
+  pip install numpy
+  pip install scikit-learn
+
+actions:
+  init:
+    command:
+      args:
+      - init
+    input:
+    - name: source
+      type: string
+    output:
+    - name: contents
+      type: string
+
