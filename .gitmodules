@@ -7,3 +7,6 @@
 [submodule "brane-trainandpredict"]
 	path = brane-trainandpredict
 	url = https://github.com/TISNN/brane-trainandpredict
+[submodule "brane-setup"]
+	path = brane-setup
+	url = https://github.com/TISNN/brane-setup.git
