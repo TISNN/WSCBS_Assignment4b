@@ -36,7 +36,13 @@ For getting each submodule, please go to the package's git repository. All of th
 - [visual](https://github.com/TISNN/brane-visualization)
 
 ## Running the pipeline
-After the installation of Brane environment, users can directly import the package via `brane import` commands.
+After the installation of Brane environment, use `makefile` to build all the brane package, it will take about 5 mins.
+
+```shell
+$ make
+```
+
+Also, users can directly import the package via `brane import` commands.
 ```shell
 $ brane import TISNN/brane-getfeatures
 $ brane import TISNN/brane-trainandpredict
