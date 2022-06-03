@@ -1,6 +1,6 @@
 # WSCBS_Assignment4b_Brane_Pipeline
 
-[![DOI](https://zenodo.org/badge/493618913.svg)](https://zenodo.org/badge/latestdoi/493618913)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6612423.svg)](https://doi.org/10.5281/zenodo.6612423)
 
 ## Introduction
 
