@@ -36,7 +36,7 @@ For getting each submodule, please go to the package's git repository. All of th
 - [visual](https://github.com/TISNN/brane-visualization)
 
 ## Running the pipeline
-After the installation of Brane environment, use `makefile` to build all the brane package, it will take about 6 mins.
+After the installation of Brane environment, use `makefile` to build all the brane package, it will take about 10 mins.
 
 ```shell
 $ make
