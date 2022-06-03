@@ -12,7 +12,7 @@ This is an assignment of Web Service and Cloud-Based Service course in UvA at pe
 
 ## Structure
 
-Our pipeline consists of four Brane packages: `Setup` `getfeatures`, `trainandpredict` and `visualization`.
+Our pipeline consists of four Brane packages: `setup` `getfeatures`, `trainandpredict` and `visualization`.
 
 ### The compute package
 - [getfeatures](https://github.com/TISNN/brane-getfeatures)
@@ -21,7 +21,7 @@ Our pipeline consists of four Brane packages: `Setup` `getfeatures`, `trainandpr
 ### The visualization package
 - [visualization](https://github.com/TISNN/brane-visualization)
 
-Among them, `setup` is the package used for data preparation. `getfeatures` and `trainandpredict` are packages used for computation, including data processing and model training functions. And, `visualization` package is used to generate corresponding images based on the previously processed data.
+Among them, `setup` is the package used for data preparation. `getfeatures` and `trainandpredict` are packages used for computation, including data processing and model training functions. And, `visualization` package is used to generate corresponding figures based on the processed data.
 
 ## Getting-Started
 
@@ -43,13 +43,13 @@ $ brane import TISNN/brane-trainandpredict
 $ brane import TISNN/brane-visualization
 ```
 
-The complete pipeline implementing by Branescript is in `brane_script.ipynb`.
+The complete pipeline implementing by BraneScript is in `pipeline.ipynb`.
 
 ## Testing
-We both create python unit test and automated testing by GitHub Actions and Branescript.
+We created both python unit test and automated testing by GitHub Actions and Branescript.
 
 ### 1. pytest
-Since we are writting each package separately, unit testing for the core functions is necessacy to ensure they are executed correctly. To do so, we've built python scripts to test each of our functions individually. The pytest scripts are put in the `pytest.py` file, in each package.
+Since we are writing each package separately, unit testing for the core functions is necessary to ensure they are executed correctly. To do so, we've built python scripts to test each of our functions individually. The pytest scripts are put in the `pytest.py` file, in each package.
 
 ### 2. Automated testing by Branescript
 Another complete test is to consider the execution of the pipeline in Brane. For this testing, we created automated test workflow for each Brane package, using GitHub Actions service.
@@ -61,7 +61,7 @@ The steps for testing include:
 3. Build the Brane package
 4. Run package by BraneScript.
 
-The branescript is executed by the `brane run` command in the form of `test.txt`. We can determine whether it has successfully completed the task by examining the results of the execution.
+The BraneScript is executed by the `brane run` command in the form of `test.txt`. We can determine whether it has successfully completed the task by examining the results of the execution.
 
 After accomplishing this, we have actually built the complete CI/CD, which is part of the standard development workflow. Every time we use `git push` to update our code, Github Actions will automatically test it based on the workflow *(.github/workflow/cicd_test.yml)* we created. For each package in this project, it takes about 6 minutes to complete the branescript testing.
 
