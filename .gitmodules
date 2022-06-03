@@ -9,4 +9,7 @@
 	url = https://github.com/TISNN/brane-trainandpredict
 [submodule "brane-setup"]
 	path = brane-setup
-	url = https://github.com/TISNN/brane-setup.git
+	url = https://github.com/TISNN/brane-setup
+[submodule "brane-visualization"]
+	path = brane-visualization
+	url = https://github.com/TISNN/brane-visualization
