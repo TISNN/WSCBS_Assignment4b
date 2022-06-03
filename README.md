@@ -46,7 +46,7 @@ $ brane import TISNN/brane-visualization
 The complete pipeline implementing by BraneScript is in `pipeline.ipynb`.
 
 ## Testing
-We created both python unit test and automated testing by GitHub Actions and Branescript.
+We created both python unit testing and automated testing by GitHub Actions and BraneScript.
 
 ### 1. pytest
 Since we are writing each package separately, unit testing for the core functions is necessary to ensure they are executed correctly. To do so, we've built python scripts to test each of our functions individually. The pytest scripts are put in the `pytest.py` file, in each package.
